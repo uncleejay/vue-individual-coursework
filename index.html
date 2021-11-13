@@ -29,62 +29,68 @@
 <body>
 	<div id="app">
 		<h2 class="text-center mt-5">{{sitename}}</h2>
-		<button class="cart-btn btn btn-primary"><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
+		<button class="cart-btn btn btn-primary" v-bind:disabled="cartItemCount === ''"><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
 		<section class="mt-5">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-2">
-						<h6>Sort By</h6>
-						<div class="custom-control custom-radio">
-						  <input type="radio" id="subject" name="customRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="subject">Subject</label>
-						</div>
-						<div class="custom-control custom-radio">
-						  <input type="radio" id="location" name="customRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="location">Location</label>
-						</div>
-						<div class="custom-control custom-radio mb-1">
-						  <input type="radio" id="price" name="customRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="price">Price</label>
-						</div>
-						<div class="custom-control custom-radio mb-1">
-						  <input type="radio" id="availability" name="customRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="availability">Availability</label>
+			<div v-if="showProduct">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2">
+							<h6>Sort By</h6>
+							<div class="custom-control custom-radio">
+							  <input type="radio" id="subject" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="subject">Subject</label>
+							</div>
+							<div class="custom-control custom-radio">
+							  <input type="radio" id="location" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="location">Location</label>
+							</div>
+							<div class="custom-control custom-radio mb-1">
+							  <input type="radio" id="price" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="price">Price</label>
+							</div>
+							<div class="custom-control custom-radio mb-1">
+							  <input type="radio" id="availability" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="availability">Availability</label>
+							</div>
+
+							<!-- order by ascending or descedning order -->
+							<h6 class="mt-4">Order By</h6>
+							<div class="custom-control custom-radio mb-1">
+							  <input type="radio" id="ascending" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="ascending">Ascending</label>
+							</div>
+							<div class="custom-control custom-radio mb-1">
+							  <input type="radio" id="descending" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="descending">Descending</label>
+							</div>
+							<!-- end of order by ascending or descending order -->
+
 						</div>
 
-						<!-- order by ascending or descedning order -->
-						<h6 class="mt-4">Order By</h6>
-						<div class="custom-control custom-radio mb-1">
-						  <input type="radio" id="ascending" name="customRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="ascending">Ascending</label>
-						</div>
-						<div class="custom-control custom-radio mb-1">
-						  <input type="radio" id="descending" name="customRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="descending">Descending</label>
-						</div>
-						<!-- end of order by ascending or descending order -->
-
-					</div>
-
-					<!-- UI to display lesson items -->
-					<div v-for="lesson in lessons" :key="lesson.id" class="col-md-3 mb-4">
-						<div class="card">
-							<img class="card-img" v-bind:src="lesson.image" alt="Lesson Image">
-							<div class="card-body">
-								<h6>Subject: {{lesson.subject}}</h6>
-								<h6>Location: {{lesson.location}}</h6>
-								<h6>Available: {{lesson.availablespace - cartCount(lesson.id)}}</h6>
-								<h6>Price: £{{lesson.price}}</h6>
-								<button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-primary">Add to Cart</button>
-								<!-- Error Messages -->
-								<button class="btn btn-primary" v-else="lesson.availablespace === cartCount(lesson.id)" v-bind:disabled="!canAddToCart(lesson)">Add to Cart</button>
-								<!-- End of Error Message -->
+						<!-- UI to display lesson items -->
+						<div v-for="lesson in lessons" :key="lesson.id" class="col-md-3 mb-4">
+							<div class="card">
+								<img class="card-img" v-bind:src="lesson.image" alt="Lesson Image">
+								<div class="card-body">
+									<h6>Subject: {{lesson.subject}}</h6>
+									<h6>Location: {{lesson.location}}</h6>
+									<h6>Available: {{lesson.availablespace - cartCount(lesson.id)}}</h6>
+									<h6>Price: £{{lesson.price}}</h6>
+									<button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-primary">Add to Cart</button>
+									<!-- disable cart -->
+									<button class="btn btn-primary" v-else="lesson.availablespace === cartCount(lesson.id)" v-bind:disabled="!canAddToCart(lesson)">Add to Cart</button>
+									<!-- End of disable cart -->
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- end of UI to display lesson items -->
+						<!-- end of UI to display lesson items -->
 
+					</div>
 				</div>
+			</div>
+
+			<div v-else>
+				Nothing
 			</div>
 		</section>
 	</div>
@@ -95,7 +101,7 @@
 		el: "#app",
         data:{
         	sitename: 'Browse Lessons',
-        	showProd: true,
+        	showProduct: true,
         	order:{
         		firstName: '',
         		lastName: '',
