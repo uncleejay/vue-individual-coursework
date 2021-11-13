@@ -35,7 +35,7 @@ let lessons = [
     },
     {
         id: 5,
-        subject: "Science",
+        subject: "Geography",
         location: "Westfield",
         price : 550,
         image: "",
