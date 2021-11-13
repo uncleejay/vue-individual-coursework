@@ -13,7 +13,7 @@ let lessons = [
         subject: "English",
         location: "Hendon",
         price : 350,
-        image: "images/english/jpg",
+        image: "images/english.jpg",
         availablespace: 5,
         
     },
@@ -38,7 +38,7 @@ let lessons = [
         subject: "Geography",
         location: "Westfield",
         price : 550,
-        image: "",
+        image: "images/geography.jpg",
         availablespace: 5,    
     },
     {
@@ -54,7 +54,7 @@ let lessons = [
         subject: "UI/UX",
         location: "Westfield",
         price : 450,
-        image: "images/uiux.jpg",
+        image: "images/ux.png",
         availablespace: 5,   
     },
     {
@@ -70,7 +70,7 @@ let lessons = [
         subject: "Backend Development",
         location: "Chelsea",
         price : 950,
-        image: "images/backend.jpg",
+        image: "images/webw.jpg",
         availablespace: 5,
     },
     {

@@ -14,6 +14,10 @@
 			background-color: #FC641D;
 			border-color: #FC641D;
 		}
+		.btn-primary:hover{
+			background-color: #DF4903;
+			border-color: #DF4903;
+		}
 	</style>
 	<title>Vue Individual Course Work</title>
 </head>
@@ -24,15 +28,43 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<h3>Filter</h3>
+						<h6>Sort By</h6>
+						<div class="custom-control custom-radio mb-1">
+						  <input type="radio" id="subject" name="subject" class="custom-control-input">
+						  <label class="custom-control-label" for="subject">Subject</label>
+						</div>
+						<div class="custom-control custom-radio mb-1">
+						  <input type="radio" id="location" name="location" class="custom-control-input">
+						  <label class="custom-control-label" for="location">Location</label>
+						</div>
+						<div class="custom-control custom-radio mb-1">
+						  <input type="radio" id="price" name="price" class="custom-control-input">
+						  <label class="custom-control-label" for="price">Price</label>
+						</div>
+						<div class="custom-control custom-radio mb-1">
+						  <input type="radio" id="availability" name="availability" class="custom-control-input">
+						  <label class="custom-control-label" for="availability">Availability</label>
+						</div>
+						<!-- order by ascending or descedning order -->
+						<h6 class="mt-4">Order By</h6>
+						<div class="custom-control custom-radio mb-1">
+						  <input type="radio" id="ascending" name="ascending" class="custom-control-input">
+						  <label class="custom-control-label" for="ascending">Ascending</label>
+						</div>
+						<div class="custom-control custom-radio mb-1">
+						  <input type="radio" id="descending" name="descending" class="custom-control-input">
+						  <label class="custom-control-label" for="descending">Descending</label>
+						</div>
+						<!-- end of order by ascending or descending order -->
 					</div>
-					<div  class="col-md-3">
+					<div v-for="lessonBook in lesson" :key="lessonBook.id" class="col-md-3 mb-4">
 						<div class="card">
-							<img class="card-img" src="" alt="Lesson Image">
+							<img class="card-img" v-bind:src="lessonBook.image" alt="Lesson Image">
 							<div class="card-body">
-								<h6>Subject:</h6>
-								<h6>Location:</h6>
-								<h6>Price: £</h6>
+								<h6>Subject: {{lessonBook.subject}}</h6>
+								<h6>Location: {{lessonBook.location}}</h6>
+								<h6>Available: {{lessonBook.availablespace}}</h6>
+								<h6>Price: £{{lessonBook.price}}</h6>
 								<button class="btn btn-primary">Add to Cart</button>
 							</div>
 						</div>
