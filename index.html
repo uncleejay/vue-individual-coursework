@@ -29,7 +29,8 @@
 <body>
 	<div id="app">
 		<h2 class="text-center mt-5">{{sitename}}</h2>
-		<button class="cart-btn btn btn-primary" v-bind:disabled="cartItemCount === ''"><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
+		<button class="cart-btn btn btn-primary" v-if="cartItemCount === ''" hidden><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
+		<button class="cart-btn btn btn-primary" v-else><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
 		<section class="mt-5">
 			<div v-if="showProduct">
 				<div class="container">
