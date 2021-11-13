@@ -4,7 +4,7 @@ let lessons = [
         subject: "Math",
         location: "London",
         price : 400,
-        image: "",
+        image: "images/maths.jpg",
         availablespace: 5,
         
     },
@@ -13,7 +13,7 @@ let lessons = [
         subject: "English",
         location: "Hendon",
         price : 350,
-        image: "",
+        image: "images/english/jpg",
         availablespace: 5,
         
     },
@@ -22,7 +22,7 @@ let lessons = [
         subject: "Art",
         location: "Camden",
         price : 450,
-        image: "",
+        image: "images/art.jpg",
         availablespace: 5,  
     },
     {
@@ -30,7 +30,7 @@ let lessons = [
         subject: "Science",
         location: "Canning Town",
         price : 600,
-        image: "",
+        image: "images/science.jpg",
         availablespace: 5,    
     },
     {
@@ -46,7 +46,7 @@ let lessons = [
         subject: "Music",
         location: "Stratford",
         price : 250,
-        image: "",
+        image: "images/music.jpg",
         availablespace: 5,    
     },
     {
@@ -54,7 +54,7 @@ let lessons = [
         subject: "UI/UX",
         location: "Westfield",
         price : 450,
-        image: "",
+        image: "images/uiux.jpg",
         availablespace: 5,   
     },
     {
@@ -62,7 +62,7 @@ let lessons = [
         subject: "Mobile Development",
         location: "Chelsea",
         price : 950,
-        image: "",
+        image: "images/mobiledev.jpeg",
         availablespace: 5, 
     },
     {
@@ -70,7 +70,7 @@ let lessons = [
         subject: "Backend Development",
         location: "Chelsea",
         price : 950,
-        image: "",
+        image: "images/backend.jpg",
         availablespace: 5,
     },
     {
@@ -78,7 +78,7 @@ let lessons = [
         subject: "Biology",
         location: "Old Traford",
         price : 450,
-        image: "",
+        image: "images/biology.jpg",
         availablespace: 5,      
     },
 ]
