@@ -73,9 +73,12 @@
 							<div class="card-body">
 								<h6>Subject: {{lesson.subject}}</h6>
 								<h6>Location: {{lesson.location}}</h6>
-								<h6>Available: {{lesson.availablespace}}</h6>
+								<h6>Available: {{lesson.availablespace - cartCount(lesson.id)}}</h6>
 								<h6>Price: £{{lesson.price}}</h6>
 								<button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-primary">Add to Cart</button>
+								<!-- Error Messages -->
+								<button class="btn btn-primary" v-else="lesson.availablespace === cartCount(lesson.id)" v-bind:disabled="!canAddToCart(lesson)">Add to Cart</button>
+								<!-- End of Error Message -->
 							</div>
 						</div>
 					</div>
