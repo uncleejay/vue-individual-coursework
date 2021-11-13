@@ -70,7 +70,7 @@ let lessons = [
         subject: "Backend Development",
         location: "Chelsea",
         price : 950,
-        image: "images/webw.jpg",
+        image: "images/web.jpg",
         availablespace: 5,
     },
     {
