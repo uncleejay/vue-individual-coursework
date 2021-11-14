@@ -28,11 +28,13 @@
 </head>
 <body>
 	<div id="app">
-		<h2 class="text-center mt-5">{{sitename}}</h2>
-		<button class="cart-btn btn btn-primary" v-if="cartItemCount === ''" hidden><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
-		<button class="cart-btn btn btn-primary" v-else><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
+		<!-- Hides and shows the cart depending on whether or not it is empty -->
+		<button class="cart-btn btn btn-primary mt-5" v-if="cartItemCount === ''" hidden><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
+		<button class="cart-btn btn btn-primary mt-5" v-on:click="showShoppingCartPage()" v-else><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
+		<!-- End of Hides and shows the cart depending on whether or not it is empty -->
 		<section class="mt-5">
 			<div v-if="showProduct">
+				<h2 class="text-center mt-5 mb-5">{{homepage}}</h2>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
@@ -69,13 +71,13 @@
 						</div>
 
 						<!-- UI to display lesson items -->
-						<div v-for="lesson in lessons" :key="lesson.id" class="col-md-3 mb-4">
+						<div v-for="lesson in lessons"  class="col-md-3 mb-4">
 							<div class="card">
 								<img class="card-img" v-bind:src="lesson.image" alt="Lesson Image">
 								<div class="card-body">
 									<h6>Subject: {{lesson.subject}}</h6>
 									<h6>Location: {{lesson.location}}</h6>
-									<h6>Available: {{lesson.availablespace - cartCount(lesson.id)}}</h6>
+									<h6>Available: {{lesson.availablespace - cartCount(lesson)}}</h6>
 									<h6>Price: £{{lesson.price}}</h6>
 									<button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-primary">Add to Cart</button>
 									<!-- disable cart -->
@@ -86,13 +88,44 @@
 						</div>
 						<!-- end of UI to display lesson items -->
 
+						<!-- UI for checkout -->
 					</div>
 				</div>
 			</div>
 
+
 			<div v-else>
-				Nothing
+				<!-- UI to show items added to cart -->
+				<h2 class="text-center mt-5 mb-5">{{cartpage}}</h2>
+				<div class="container">
+					<div class="row">
+						<div v-for="lesson in cart" class="col-md-3 mb-4">
+							<div class="card">
+								<img class="card-img" v-bind:src="lesson.image" alt="Lesson Image">
+								<div class="card-body">
+									<h6>Subject: {{lesson.subject}}</h6>
+									<h6>Location: {{lesson.location}}</h6>
+									<h6>Price: £{{lesson.price}}</h6>
+									<button v-on:click="removeFromCart(lesson, cart)" class="btn btn-primary">Remove from Cart</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h2 class="text-center mt-5 mb-5">Checkout</h2>
+					<form class="mb-5">
+					  <div class="form-row">
+					    <div class="col">
+					      <input type="text" class="form-control" placeholder="Name" required>
+					    </div>
+					    <div class="col">
+					      <input type="text" class="form-control" placeholder="Phone Number" required>
+					    </div>
+					  </div>
+					</form>
+				</div>
+				<!-- End of UI to show items added to cart -->
 			</div>
+
 		</section>
 	</div>
 
@@ -101,7 +134,8 @@
 	var vm = new Vue ({
 		el: "#app",
         data:{
-        	sitename: 'Browse Lessons',
+        	homepage: 'Browse Lessons',
+        	cartpage: 'Shopping Cart',
         	showProduct: true,
         	order:{
         		firstName: '',
@@ -114,7 +148,11 @@
         methods: {
         	// Adds Product to cart
             addToCart: function (lesson) {
-                this.cart.push(lesson.id);    
+                this.cart.push(lesson);    
+            },
+            // Removes an item from the cart
+            removeFromCart: function(lesson, cart){
+            	this.cart.splice(this.cart.indexOf(lesson), 1);
             },
             // Checks the amount of each product in the cart
             canAddToCart(lesson){
@@ -129,6 +167,9 @@
             		}
             	}
             	return count;
+            },
+            showShoppingCartPage: function(){
+            	this.showProduct = this.showProduct ? false : true;
             }
         },
         computed: {
