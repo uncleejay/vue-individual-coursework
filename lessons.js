@@ -6,7 +6,7 @@ let lessons = [
         price : 400,
         image: "images/maths.jpg",
         availablespace: 5,
-        
+        rating: 'fa fa-star'
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ let lessons = [
         price : 350,
         image: "images/english.jpg",
         availablespace: 5,
-        
+        rating: 'fa fa-star'
     },
     {
         id: 3,
@@ -23,7 +23,8 @@ let lessons = [
         location: "Camden",
         price : 450,
         image: "images/art.jpg",
-        availablespace: 5,  
+        availablespace: 5,
+        rating: 'fa fa-star'  
     },
     {
         id: 4,
@@ -31,7 +32,8 @@ let lessons = [
         location: "Canning Town",
         price : 600,
         image: "images/science.jpg",
-        availablespace: 5,    
+        availablespace: 5,
+        rating: 'fa fa-star'    
     },
     {
         id: 5,
@@ -39,7 +41,8 @@ let lessons = [
         location: "Westfield",
         price : 550,
         image: "images/geography.jpg",
-        availablespace: 5,    
+        availablespace: 5,
+        rating: 'fa fa-star'    
     },
     {
         id: 6,
@@ -47,7 +50,8 @@ let lessons = [
         location: "Stratford",
         price : 250,
         image: "images/music.jpg",
-        availablespace: 5,    
+        availablespace: 5,
+        rating: 'fa fa-star'    
     },
     {
         id: 7,
@@ -55,7 +59,8 @@ let lessons = [
         location: "Westfield",
         price : 450,
         image: "images/ux.png",
-        availablespace: 5,   
+        availablespace: 5,
+        rating: 'fa fa-star'   
     },
     {
         id: 8,
@@ -63,7 +68,8 @@ let lessons = [
         location: "Chelsea",
         price : 950,
         image: "images/mobiledev.jpeg",
-        availablespace: 5, 
+        availablespace: 5,
+        rating: 'fa fa-star' 
     },
     {
         id: 9,
@@ -72,6 +78,7 @@ let lessons = [
         price : 950,
         image: "images/web.jpg",
         availablespace: 5,
+        rating: 'fa fa-star'
     },
     {
         id: 10,
@@ -79,6 +86,7 @@ let lessons = [
         location: "Old Traford",
         price : 450,
         image: "images/biology.jpg",
-        availablespace: 5,      
+        availablespace: 5,
+        rating: 'fa fa-star'      
     },
 ]

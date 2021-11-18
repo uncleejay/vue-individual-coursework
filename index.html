@@ -41,12 +41,12 @@
 		    <li class="breadcrumb-item active" aria-current="page">{{homepage}}</li>
 		  </ol>
 		</nav>
-		<section class="mt-5">
+		<div class="mt-5">
 			<div v-if="showProduct">
 				<h2 class="text-center mt-5 mb-5"></h2>
 				<div class="container">
 					<div class="row">
-						<div class="col-md-2">
+						<aside class="col-md-2">
 							<h6>Sort By</h6>
 							<div class="custom-control custom-radio">
 							  <input type="radio" id="subject" v-model="sort.sortingMethod" value="subject" name="" class="custom-control-input">
@@ -77,7 +77,7 @@
 							</div>
 							<!-- end of order by ascending or descending order -->
 
-						</div>
+						</aside>
 
 						<!-- UI to display lesson items -->
 						<div v-for="lesson in sortedLessons"  class="col-md-3 mb-4">
@@ -88,6 +88,7 @@
 									<h6>Location: {{lesson.location}}</h6>
 									<h6>Available: {{lesson.availablespace - cartCount(lesson)}}</h6>
 									<h6>Price: £{{lesson.price}}</h6>
+									<h6>Rating: <span v-bind:class="lesson.rating"></span></h6>
 									<button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-primary">Add to Cart</button>
 									<!-- disable cart -->
 									<button class="btn btn-primary" v-else="lesson.availablespace === cartCount(lesson.id)" v-bind:disabled="!canAddToCart(lesson)">Add to Cart</button>
@@ -96,8 +97,6 @@
 							</div>
 						</div>
 						<!-- end of UI to display lesson items -->
-
-						<!-- UI for checkout -->
 					</div>
 				</div>
 			</div>
@@ -138,7 +137,7 @@
 				<!-- End of UI to show items added to cart -->
 			</div>
 
-		</section>
+		</div>
 	</div>
 
 <script>

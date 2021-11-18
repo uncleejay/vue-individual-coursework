@@ -10,6 +10,9 @@ a:hover{
 	color: #FC641D;
 	text-decoration: none;
 }
+.fa{
+	color: orange;
+}
 .custom-control-input:checked~.custom-control-label::before{
 	background-color: #FC641D;
 	border-color: #FC641D;
