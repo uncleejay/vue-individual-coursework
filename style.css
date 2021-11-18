@@ -1,0 +1,51 @@
+.logo{
+	color: #FC641D;
+	font-family: cursive;
+	font-weight: bold;
+}
+a{
+	color: #FC641D;
+}
+a:hover{
+	color: #FC641D;
+	text-decoration: none;
+}
+.custom-control-input:checked~.custom-control-label::before{
+	background-color: #FC641D;
+	border-color: #FC641D;
+}
+.btn-primary{
+	background-color: #FC641D;
+	border-color: #FC641D;
+}
+.btn-primary:hover{
+	background-color: #DF4903;
+	border-color: #DF4903;
+	outline: none;
+}
+.btn-primary:disabled{
+	background-color: #DF4903;
+	border-color: #DF4903;
+}
+.btn-primary:focus{
+	background-color: #DF4903;
+	border-color: #DF4903;
+	outline: none;
+}
+.btn-primary:active{
+	background-color: #DF4903;
+	border-color: #DF4903;
+	outline: none;
+}
+
+.cart-btn{
+	float: right;
+	margin-right: 35px;
+}
+.jumbotron{
+	background-color: #ffffff;
+	margin-bottom: 0;
+}
+.breadcrumb{
+	padding-left: 12.6rem;
+}

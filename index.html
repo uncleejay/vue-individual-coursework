@@ -9,36 +9,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 	<!-- script for lesson.js -->
 	<script src="lessons.js"></script>
-	<!-- Internal css style -->
-	<style type="text/css">
-		.logo{
-			color: #FC641D;
-			font-family: cursive;
-			font-weight: bold;
-		}
-		a{
-			color: #FC641D;
-		}
-		.btn-primary{
-			background-color: #FC641D;
-			border-color: #FC641D;
-		}
-		.btn-primary:hover{
-			background-color: #DF4903;
-			border-color: #DF4903;
-		}
-		.cart-btn{
-			float: right;
-			margin-right: 35px;
-		}
-		.jumbotron{
-			background-color: #ffffff;
-			margin-bottom: 0;
-		}
-		.breadcrumb{
-			padding-left: 12.6rem;
-		}
-	</style>
+	<!-- css style -->
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Vue Individual Course Work</title>
 </head>
 <body>
@@ -49,24 +21,26 @@
 					<div class="col-md-2">
 						<h2 class="logo">Lesson</h2>
 					</div>
-					<div class="offset-1 col-md-6">
+					<div class="col-md-6">
 						<form>
 							<input type="text" class="form-control" v-model="term" v-on:keyup="searchLessons" placeholder="Search">
 						</form>
+					</div>
+					<div class="col-md-4">
+						<!-- Hides and shows the cart depending on whether or not it is empty -->
+						<button class="cart-btn btn btn-primary" v-if="cartItemCount === ''" hidden><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
+						<button class="cart-btn btn btn-primary" v-on:click="showShoppingCartPage()" v-else><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
+						<!-- End of Hides and shows the cart depending on whether or not it is empty -->
 					</div>
 				</div>
 			</div>
 		</div>
 		<nav aria-label="breadcrumb">
 		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
 		    <li class="breadcrumb-item active" aria-current="page">{{homepage}}</li>
 		  </ol>
 		</nav>
-		<!-- Hides and shows the cart depending on whether or not it is empty -->
-		<button class="cart-btn btn btn-primary mt-5" v-if="cartItemCount === ''" hidden><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
-		<button class="cart-btn btn btn-primary mt-5" v-on:click="showShoppingCartPage()" v-else><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
-		<!-- End of Hides and shows the cart depending on whether or not it is empty -->
 		<section class="mt-5">
 			<div v-if="showProduct">
 				<h2 class="text-center mt-5 mb-5"></h2>
