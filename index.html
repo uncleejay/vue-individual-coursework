@@ -46,7 +46,8 @@
 				<h2 class="text-center mt-5 mb-5"></h2>
 				<div class="container">
 					<div class="row">
-						<aside class="col-md-2">
+						<div class="col-md-2">
+						<aside>
 							<h6>Sort By</h6>
 							<div class="custom-control custom-radio">
 							  <input type="radio" id="subject" v-model="sort.sortingMethod" value="subject" name="" class="custom-control-input">
@@ -78,10 +79,10 @@
 							<!-- end of order by ascending or descending order -->
 
 						</aside>
-
+						</div>
 						<!-- UI to display lesson items -->
-						<div v-for="lesson in sortedLessons"  class="col-md-3 mb-4">
-							<div class="card">
+						<div class="col-md-10 mb-4">
+							<div  v-for="lesson in sortedLessons" class="card col-md-4">
 								<img class="card-img" v-bind:src="lesson.image" alt="Lesson Image">
 								<div class="card-body">
 									<h6>Subject: {{lesson.subject}}</h6>
