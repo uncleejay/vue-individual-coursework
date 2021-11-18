@@ -67,7 +67,7 @@ let lessons = [
         subject: "Mobile Development",
         location: "Chelsea",
         price : 950,
-        image: "images/mobiledev.jpeg",
+        image: "images/app.png",
         availablespace: 5,
         rating: 'fa fa-star' 
     },
