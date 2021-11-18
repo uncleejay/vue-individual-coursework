@@ -10,7 +10,7 @@ a:hover{
 	color: #FC641D;
 	text-decoration: none;
 }
-.fa{
+#star{
 	color: orange;
 }
 .custom-control-input:checked~.custom-control-label::before{
