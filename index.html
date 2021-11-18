@@ -40,30 +40,30 @@
 						<div class="col-md-2">
 							<h6>Sort By</h6>
 							<div class="custom-control custom-radio">
-							  <input type="radio" id="subject" name="customRadio" class="custom-control-input">
+							  <input type="radio" id="subject" v-model="sort.sortingMethod" value="subject" name="" class="custom-control-input">
 							  <label class="custom-control-label" for="subject">Subject</label>
 							</div>
 							<div class="custom-control custom-radio">
-							  <input type="radio" id="location" name="customRadio" class="custom-control-input">
+							  <input type="radio" id="location" v-model="sort.sortingMethod" value="location" name="" class="custom-control-input">
 							  <label class="custom-control-label" for="location">Location</label>
 							</div>
 							<div class="custom-control custom-radio mb-1">
-							  <input type="radio" id="price" name="customRadio" class="custom-control-input">
+							  <input type="radio" id="price" v-model="sort.sortingMethod" value="price" name="" class="custom-control-input">
 							  <label class="custom-control-label" for="price">Price</label>
 							</div>
 							<div class="custom-control custom-radio mb-1">
-							  <input type="radio" id="availability" name="customRadio" class="custom-control-input">
+							  <input type="radio" id="availability" v-model="sort.sortingMethod" value="availability" name="" class="custom-control-input">
 							  <label class="custom-control-label" for="availability">Availability</label>
 							</div>
 
 							<!-- order by ascending or descedning order -->
 							<h6 class="mt-4">Order By</h6>
 							<div class="custom-control custom-radio mb-1">
-							  <input type="radio" id="ascending" name="customRadio" class="custom-control-input">
+							  <input type="radio" id="ascending" v-model="sort.sortingOrder" value="ascending" name="" class="custom-control-input">
 							  <label class="custom-control-label" for="ascending">Ascending</label>
 							</div>
 							<div class="custom-control custom-radio mb-1">
-							  <input type="radio" id="descending" name="customRadio" class="custom-control-input">
+							  <input type="radio" id="descending" v-model="sort.sortingOrder" value="descending" name="" class="custom-control-input">
 							  <label class="custom-control-label" for="descending">Descending</label>
 							</div>
 							<!-- end of order by ascending or descending order -->
@@ -71,7 +71,7 @@
 						</div>
 
 						<!-- UI to display lesson items -->
-						<div v-for="lesson in lessons"  class="col-md-3 mb-4">
+						<div v-for="lesson in sortedLessons"  class="col-md-3 mb-4">
 							<div class="card">
 								<img class="card-img" v-bind:src="lesson.image" alt="Lesson Image">
 								<div class="card-body">
@@ -146,6 +146,10 @@
         	},
         	lessons: lessons,
         	cart: [],
+        	sort: {
+                sortingMethod: "location",
+                sortingOrder: "ascending",
+            },
         },
         methods: {
         	// Adds Product to cart
@@ -182,6 +186,62 @@
         	//returns length of the cart items
                 cartItemCount: function() {
                     return this.cart.length || "";
+                },
+                sortedLessons(lessons, sort){
+                    //the comparison that defines the order
+
+                    if(this.sort.sortingMethod == "location" && this.sort.sortingOrder === "ascending" ){
+                    function compare (a, b){
+                        if (a.location > b.location) return 1;
+                        if (a.location < b.location) return -1;
+                        return 0;
+                    }
+                    
+	                }else if(this.sort.sortingMethod == "location" && this.sort.sortingOrder === "descending" ){
+	                    function compare (a, b){
+	                        if (a.location < b.location) return 1;
+	                        if (a.location > b.location) return -1;
+	                        return 0;
+	                    }
+	                }else if(this.sort.sortingMethod === "price" && this.sort.sortingOrder === "ascending" ){
+	                    function compare (a, b){
+	                        if (a.price > b.price) return 1;
+	                        if (a.price < b.price) return -1;
+	                        return 0;
+	                    }
+	                }else if(this.sort.sortingMethod === "price" && this.sort.sortingOrder === "descending" ){
+	                    function compare (a, b){
+	                        if (a.price < b.price) return 1;
+	                        if (a.price > b.price) return -1;
+	                        return 0;
+	                    }
+	                }else if(this.sort.sortingMethod == "subject" && this.sort.sortingOrder === "ascending" ){
+	                    function compare (a, b){
+	                        if (a.subject > b.subject) return 1;
+	                        if (a.subject < b.subject) return -1;
+	                        return 0;
+	                    }
+	                }else if(this.sort.sortingMethod == "subject" && this.sort.sortingOrder === "descending" ){
+	                    function compare (a, b){
+	                        if (a.subject < b.subject) return 1;
+	                        if (a.subject > b.subject) return -1;
+	                        return 0;
+	                    }
+	                }else if(this.sort.sortingMethod == "availablespace" && this.sort.sortingOrder === "ascending" ){
+	                    function compare (a, b){
+	                        if (a.availablespace > b.availablespace) return 1;
+	                        if (a.availablespace < b.availablespace) return -1;
+	                        return 0;
+	                    }
+	                }else if(this.sort.sortingMethod == "availablespace" && this.sort.sortingOrder === "descending" ){
+	                    function compare (a, b){
+	                        if (a.availablespace < b.availablespace) return 1;
+	                        if (a.availablespace > b.availablespace) return -1;
+	                        return 0;
+	                    }
+	                }
+	                    //sort 'productArray' array and return it
+	                    return this.lessons.sort(compare);
                 },
         }
 	})
