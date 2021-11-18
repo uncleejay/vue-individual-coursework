@@ -28,6 +28,15 @@
 </head>
 <body>
 	<div id="app">
+		<div class="container mt-5">
+			<div class="row">
+				<div class="">
+					<form>
+						<input type="text" class="form-control" v-model="term" v-on:keyup="searchLessons" placeholder="Search">
+					</form>
+				</div>
+			</div>
+		</div>
 		<!-- Hides and shows the cart depending on whether or not it is empty -->
 		<button class="cart-btn btn btn-primary mt-5" v-if="cartItemCount === ''" hidden><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
 		<button class="cart-btn btn btn-primary mt-5" v-on:click="showShoppingCartPage()" v-else><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
@@ -140,6 +149,7 @@
         	homepage: 'Browse Lessons',
         	cartpage: 'Shopping Cart',
         	showProduct: true,
+        	term: '',
         	user:{
         		name: '',
         		phone: '',
@@ -174,9 +184,14 @@
             	}
             	return count;
             },
-            // Disply shopping cart page
+            // Display shopping cart page
             showShoppingCartPage: function(){
             	this.showProduct = this.showProduct ? false : true;
+            },
+            // Search For lessons
+            searchLessons: function(){
+            	this.lessons = lessons;
+	            this.lessons = this.lessons.filter(lesson => lesson.subject.toLowerCase().includes(this.term) == true || lesson.location.toLowerCase().includes(this.term));
             },
             submitForm(user) {
                 alert('Cheers '+ user.name + ' ,your order has been successfully submitted');   
