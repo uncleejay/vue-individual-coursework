@@ -81,8 +81,9 @@
 						</aside>
 						</div>
 						<!-- UI to display lesson items -->
-						<div class="col-md-10 mb-4">
-							<div  v-for="lesson in sortedLessons" class="card col-md-4">
+						<div class="col-md-10 row">
+							<div v-for="lesson in sortedLessons" class="col-md-4">
+							<div class="card mb-4">
 								<img class="card-img" v-bind:src="lesson.image" alt="Lesson Image">
 								<div class="card-body">
 									<h6>Subject: {{lesson.subject}}</h6>
@@ -96,6 +97,7 @@
 									<!-- End of disable cart -->
 								</div>
 							</div>
+						</div>
 						</div>
 						<!-- end of UI to display lesson items -->
 					</div>
@@ -120,6 +122,7 @@
 							</div>
 						</div>
 					</div>
+					<!-- Start of checkout UI -->
 					<h2 class="text-center mt-5 mb-5">Checkout</h2>
 					<form class="mb-5">
 					  <div class="form-row">
@@ -134,6 +137,7 @@
 					    <input style="margin-bottom: 50px;" v-on:click="submitForm(user)" v-else class="btn btn-primary" type="submit" value="Place Order"> 
 					  </div>
 					</form>
+					<!-- End of checkout UI -->
 				</div>
 				<!-- End of UI to show items added to cart -->
 			</div>
