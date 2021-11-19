@@ -6,7 +6,7 @@ let lessons = [
         price : 400,
         image: "images/maths.jpg",
         availablespace: 5,
-        rating: 'fa fa-star'
+        rating: 5
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ let lessons = [
         price : 350,
         image: "images/english.jpg",
         availablespace: 5,
-        rating: 'fa fa-star'
+        rating: 4
     },
     {
         id: 3,
@@ -24,7 +24,7 @@ let lessons = [
         price : 450,
         image: "images/art.jpg",
         availablespace: 5,
-        rating: 'fa fa-star'  
+        rating: 5  
     },
     {
         id: 4,
@@ -33,7 +33,7 @@ let lessons = [
         price : 600,
         image: "images/science.jpg",
         availablespace: 5,
-        rating: 'fa fa-star'    
+        rating: 5   
     },
     {
         id: 5,
@@ -42,7 +42,7 @@ let lessons = [
         price : 550,
         image: "images/geography.jpg",
         availablespace: 5,
-        rating: 'fa fa-star'    
+        rating: 2   
     },
     {
         id: 6,
@@ -51,7 +51,7 @@ let lessons = [
         price : 250,
         image: "images/music.jpg",
         availablespace: 5,
-        rating: 'fa fa-star'    
+        rating: 3    
     },
     {
         id: 7,
@@ -60,7 +60,7 @@ let lessons = [
         price : 450,
         image: "images/ux.png",
         availablespace: 5,
-        rating: 'fa fa-star'   
+        rating: 2   
     },
     {
         id: 8,
@@ -69,7 +69,7 @@ let lessons = [
         price : 950,
         image: "images/app.png",
         availablespace: 5,
-        rating: 'fa fa-star' 
+        rating: 5 
     },
     {
         id: 9,
@@ -78,7 +78,7 @@ let lessons = [
         price : 950,
         image: "images/web.jpg",
         availablespace: 5,
-        rating: 'fa fa-star'
+        rating: 4
     },
     {
         id: 10,
@@ -87,6 +87,6 @@ let lessons = [
         price : 450,
         image: "images/biology.jpg",
         availablespace: 5,
-        rating: 'fa fa-star'      
+        rating: 5      
     },
 ]
